@@ -42,11 +42,6 @@ graph TD
 
 This lab allows you to test Postpipe components and database connectors in isolation.
 
-## Development Zones
-
-- `https://github.com/Sourodip-1/PostPipe-2.0/tree/devspace1` → **Backend Features**
-- `https://github.com/Sourodip-1/PostPipe-2.0/tree/devspace2` → **Frontend + Sandbox UI + UI Designs**
-
 ## Setup
 
 1.  Copy `.env.example` to `.env` (create it if missing).
