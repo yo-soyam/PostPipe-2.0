@@ -11,7 +11,7 @@
 graph TD
     User["Developer / User"]
 
-    subgraph "Postpipe Lab"
+    subgraph "Postpipe"
         Static["Static Server (Express)"]
         Dynamic["Dynamic Lab (Next.js)"]
         Connectors["Database Connectors"]
