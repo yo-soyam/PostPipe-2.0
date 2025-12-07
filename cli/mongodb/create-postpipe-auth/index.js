@@ -22,7 +22,6 @@ async function main() {
             choices: [
                 { name: '1. MongoDB', value: 'mongodb' },
                 { name: '2. (coming soon)', value: 'coming_soon_1', disabled: true },
-                { name: '3. (coming soon)', value: 'coming_soon_2', disabled: true },
             ],
         },
     ]);
@@ -42,19 +41,7 @@ async function setupMongoDB() {
         const templateDir = path.join(__dirname, 'templates', 'mongodb');
 
         // 1. Copy Template Files
-        // We copy to a 'templates/auth/mongodb' structure or generic 'lib/auth'?
-        // User request: "Copy the template/mongodb-auth folder into the user’s project directory"
-        // We will copy the contents into "src/lib/auth" if src exists, or "lib/auth" otherwise, or just "auth" folder in root.
-        // Let's verify structure. The template contains "frontend" folder too.
-        // Let's create `src/lib/auth` for backend and let user handle frontend manually?
-        // Or just dump everything into `postpipe-auth` folder?
-        // Let's follow the standard: `src/lib/auth` seems best practice for Next.js
-
-        // To keep it simple and safe, we will create a 'postpipe-auth' folder in the root 
-        // and let the user move things, OR follow the README advice.
-        // The README says: "Copy contents ... into src/lib/auth".
-        // So let's try to put it there.
-
+        // Helper to check if src exists
         const isSrc = fs.existsSync(path.join(targetDir, 'src'));
         const authDest = isSrc ? path.join(targetDir, 'src', 'lib', 'auth') : path.join(targetDir, 'lib', 'auth');
 
@@ -63,9 +50,6 @@ async function setupMongoDB() {
 
         // 2. Install Dependencies
         spinner.text = 'Installing dependencies...';
-        // mongoose, bcrypt, jsonwebtoken, postpipe
-        // dev: @types/bcryptjs @types/jsonwebtoken
-
         await execa('npm', ['install', 'mongoose', 'bcryptjs', 'jsonwebtoken', 'postpipe', 'zod', 'resend'], { cwd: targetDir });
         await execa('npm', ['install', '-D', '@types/bcryptjs', '@types/jsonwebtoken'], { cwd: targetDir });
 
@@ -80,7 +64,6 @@ RESEND_API_KEY=optional_resend_key
 NEXT_PUBLIC_APP_URL=http://localhost:3000
     `;
 
-        // Append or create
         if (fs.existsSync(envPath)) {
             await fs.appendFile(envPath, `\n${envContent}`);
         } else {

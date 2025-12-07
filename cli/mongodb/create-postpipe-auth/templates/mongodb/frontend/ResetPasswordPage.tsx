@@ -1,8 +1,7 @@
-// Copy this file to: app/auth/reset-password/page.tsx
 'use client';
 
 import { useFormState } from 'react-dom';
-import { resetPassword } from '../actions'; // Update path if you move this file
+import { resetPassword } from '../actions';
 import { useSearchParams } from 'next/navigation';
 
 const initialState = {
@@ -46,6 +45,9 @@ export default function ResetPasswordPage() {
                 <p style={{ color: state.success ? 'green' : 'red', marginTop: '10px' }}>
                     {state.message}
                 </p>
+            )}
+            {state?.success && (
+                <a href="/auth/login" style={{ display: 'block', marginTop: '10px' }}>Go to Login</a>
             )}
         </div>
     );

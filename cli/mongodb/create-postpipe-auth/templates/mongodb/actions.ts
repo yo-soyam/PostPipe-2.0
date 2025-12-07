@@ -178,7 +178,6 @@ export async function resetPassword(prevState: any, formData: FormData): Promise
     }
 }
 
-// Not a form action, returns simple object
 export async function verifyEmail(token: string) {
     if (!token) {
         return { success: false, message: "Token is required" };

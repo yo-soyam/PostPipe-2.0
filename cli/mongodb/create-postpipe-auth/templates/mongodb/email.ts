@@ -1,63 +1,47 @@
+
 import { Resend } from 'resend';
 
-// Initialize Resend with API Key from environment variables only if it exists
+// Initialize Resend only if API key is present
 const resendApiKey = process.env.RESEND_API_KEY;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
+const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
-export const sendVerificationEmail = async (email: string, token: string) => {
-    const confirmLink = `${process.env.NEXT_PUBLIC_APP_URL}/auth/verify-email?token=${token}`;
+export async function sendVerificationEmail(email: string, token: string) {
+    const link = `${appUrl}/auth/verify-email?token=${token}`;
 
     if (!resend) {
-        console.log(`[Email Simulation] Verification Email to: ${email}`);
-        console.log(`[Email Simulation] Link: ${confirmLink}`);
-        return { success: true, message: 'Email simulated' };
+        console.log(`[DEV MODE] Verification Email to ${email}: ${link}`);
+        return;
     }
 
     try {
-        const { data, error } = await resend.emails.send({
-            from: 'onboarding@resend.dev', // Update this to your verified domain
+        await resend.emails.send({
+            from: 'onboarding@resend.dev',
             to: email,
             subject: 'Verify your email',
-            html: `<p>Click <a href="${confirmLink}">here</a> to verify your email.</p>`,
+            html: `<p>Click <a href="${link}">here</a> to verify your email.</p>`,
         });
-
-        if (error) {
-            console.error('Error sending verification email:', error);
-            return { success: false, error };
-        }
-
-        return { success: true, data };
     } catch (error) {
-        console.error('Exception sending verification email:', error);
-        return { success: false, error };
+        console.error('Email sending failed:', error);
     }
-};
+}
 
-export const sendPasswordResetEmail = async (email: string, token: string) => {
-    const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/auth/reset-password?token=${token}`;
+export async function sendPasswordResetEmail(email: string, token: string) {
+    const link = `${appUrl}/auth/reset-password?token=${token}`;
 
     if (!resend) {
-        console.log(`[Email Simulation] Password Reset Email to: ${email}`);
-        console.log(`[Email Simulation] Link: ${resetLink}`);
-        return { success: true, message: 'Email simulated' };
+        console.log(`[DEV MODE] Password Reset Email to ${email}: ${link}`);
+        return;
     }
 
     try {
-        const { data, error } = await resend.emails.send({
-            from: 'onboarding@resend.dev', // Update this to your verified domain
+        await resend.emails.send({
+            from: 'onboarding@resend.dev',
             to: email,
             subject: 'Reset your password',
-            html: `<p>Click <a href="${resetLink}">here</a> to reset your password.</p>`,
+            html: `<p>Click <a href="${link}">here</a> to reset your password.</p>`,
         });
-
-        if (error) {
-            console.error('Error sending password reset email:', error);
-            return { success: false, error };
-        }
-
-        return { success: true, data };
     } catch (error) {
-        console.error('Exception sending password reset email:', error);
-        return { success: false, error };
+        console.error('Email sending failed:', error);
     }
-};
+}

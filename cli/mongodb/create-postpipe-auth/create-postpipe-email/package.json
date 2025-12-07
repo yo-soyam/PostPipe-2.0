@@ -1,17 +1,16 @@
 {
-    "name": "create-postpipe-signup",
-    "version": "1.0.2",
-    "description": "CLI to scaffold PostPipe Signup Flow",
+    "name": "create-postpipe-email",
+    "version": "1.0.3",
+    "description": "CLI to scaffold PostPipe Email Utility (Resend)",
     "author": "Sourodip Roy",
     "license": "CC-BY-NC-SA-4.0",
     "type": "module",
     "bin": {
-        "create-postpipe-signup": "./index.js"
+        "create-postpipe-email": "./index.js"
     },
     "dependencies": {
         "chalk": "^5.3.0",
         "fs-extra": "^11.2.0",
-        "inquirer": "^9.2.14",
         "ora": "^8.0.1",
         "execa": "^8.0.1"
     }
