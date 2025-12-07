@@ -1,6 +1,6 @@
 {
     "name": "create-postpipe-signup",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "CLI to scaffold PostPipe Signup Flow",
     "author": "PostPipe Team",
     "license": "MIT",

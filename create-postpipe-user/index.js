@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import chalk from 'chalk';
 import ora from 'ora';
 import { execa } from 'execa';
+import inquirer from 'inquirer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +14,27 @@ const __dirname = path.dirname(__filename);
 async function main() {
     console.log(chalk.bold.blue('\nTypically used with PostPipe, this installs the User Model & DB Connection.\n'));
 
-    const spinner = ora('Setting up User Model...').start();
+    const answers = await inquirer.prompt([
+        {
+            type: 'list',
+            name: 'database',
+            message: 'Choose your database:',
+            choices: [
+                { name: '1. MongoDB', value: 'mongodb' },
+                { name: '2. (coming soon)', value: 'coming_soon_1', disabled: true },
+            ],
+        },
+    ]);
+
+    if (answers.database === 'mongodb') {
+        await setupMongoDB();
+    } else {
+        console.log('Selection not supported yet.');
+    }
+}
+
+async function setupMongoDB() {
+    const spinner = ora('Setting up User Model (MongoDB)...').start();
 
     try {
         const targetDir = process.cwd();
