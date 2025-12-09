@@ -4,6 +4,11 @@
     "description": "CLI to scaffold PostPipe Email Utility (Resend)",
     "author": "Sourodip Roy",
     "license": "CC-BY-NC-SA-4.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Sourodip-1/PostPipe-2.0",
+        "directory": "cli/mongodb/create-postpipe-auth/create-postpipe-email"
+    },
     "type": "module",
     "bin": {
         "create-postpipe-email": "./index.js"

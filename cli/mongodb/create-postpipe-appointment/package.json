@@ -6,7 +6,8 @@
     "license": "CC-BY-NC-SA-4.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/Sourodip-1/PostPipe-2.0"
+        "url": "https://github.com/Sourodip-1/PostPipe-2.0",
+        "directory": "cli/mongodb/create-postpipe-appointment"
     },
     "type": "module",
     "bin": {
