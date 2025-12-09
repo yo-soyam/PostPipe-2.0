@@ -1,8 +1,8 @@
-// File: D:\Codes\PostPipe-2.0\src\dynamic-lab\app\appointment-demo\page.tsx
-import * as entry from '../../../../app/appointment-demo/page.js'
+// File: D:\Codes\PostPipe-2.0\src\dynamic-lab\app\form-demo\page.tsx
+import * as entry from '../../../../app/form-demo/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../app/appointment-demo/page.js')
+type TEntry = typeof import('../../../../app/form-demo/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{

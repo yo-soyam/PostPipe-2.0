@@ -1,22 +1,5 @@
 {
-  "node": {
-    "339c060a600303b14b8b00cd69243048216bf5be": {
-      "workers": {
-        "app/appointment-demo/page": "(action-browser)/../../node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CCodes%5C%5CPostPipe-2.0%5C%5Ctemplates%5C%5Cappointment%5C%5Cmongodb%5C%5Cactions.ts%22%2C%5B%22createAppointment%22%2C%22getAppointments%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/appointment-demo/page": "action-browser"
-      }
-    },
-    "59928387bba942a8a92c761745c64326f9b9257d": {
-      "workers": {
-        "app/appointment-demo/page": "(action-browser)/../../node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CCodes%5C%5CPostPipe-2.0%5C%5Ctemplates%5C%5Cappointment%5C%5Cmongodb%5C%5Cactions.ts%22%2C%5B%22createAppointment%22%2C%22getAppointments%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/appointment-demo/page": "action-browser"
-      }
-    }
-  },
+  "node": {},
   "edge": {},
-  "encryptionKey": "Pk48PZprxTOdlcFvr18KfVO+A4eYinPoseUnn+qVNfY="
+  "encryptionKey": "2C95L03roaqZ9SD8V4W6BnWR9IYlDcnkOOtuiqCX6V4="
 }
