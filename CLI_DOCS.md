@@ -14,17 +14,28 @@ npx create-postpipe-auth
 
 ---
 
+## 💾 Supported Databases
+
+Currently, our CLI tools are optimized for:
+
+| Database          | Status             | Notes                              |
+| :---------------- | :----------------- | :--------------------------------- |
+| **MongoDB** 🍃    | ✅ Fully Supported | Mongoose ODM integration included. |
+| **PostgreSQL** 🐘 | 🚧 Coming Soon     | Planned for future release.        |
+
+---
+
 ## 🧩 Modular Tools
 
 If you prefer to build piece-by-piece, use our specific modules:
 
-| Feature                | Command                           | Description                                       |
-| :--------------------- | :-------------------------------- | :------------------------------------------------ |
-| **Appointment System** | `npx create-postpipe-appointment` | Scaffolds Appointment Model, Actions & API.       |
-| **Form APIs**          | `npx create-postpipe-form`        | Interactive: Contact, Feedback, Newsletter forms. |
-| **User Model**         | `npx create-postpipe-user`        | Installs Mongoose User Model & DB Connector.      |
-| **Email Util**         | `npx create-postpipe-email`       | Installs Resend Email Utility.                    |
-| **Signup Flow**        | `npx create-postpipe-signup`      | Installs Backend + Signup Page implementation.    |
+| Feature                   | Command                           | Description                                       |
+| :------------------------ | :-------------------------------- | :------------------------------------------------ |
+| **Appointment System** 📅 | `npx create-postpipe-appointment` | Scaffolds Appointment Model, Actions & API.       |
+| **Form APIs** 📝          | `npx create-postpipe-form`        | Interactive: Contact, Feedback, Newsletter forms. |
+| **User Model** 👤         | `npx create-postpipe-user`        | Installs Mongoose User Model & DB Connector.      |
+| **Email Util** 📧         | `npx create-postpipe-email`       | Installs Resend Email Utility.                    |
+| **Signup Flow** 🔐        | `npx create-postpipe-signup`      | Installs Backend + Signup Page implementation.    |
 
 ---
 
