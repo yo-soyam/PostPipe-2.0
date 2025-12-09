@@ -6,11 +6,11 @@ A powerful CLI tool to scaffold production-ready authentication for Next.js appl
 
 ## Features
 
-*   **⚡ Instant Setup**: One command to install everything.
-*   **🔒 Secure**: Bcrypt hashing, JWT sessions (HTTP-only cookies), Zod validation.
-*   **📧 Email Ready**: Built-in Resend integration for verification and password resets.
-*   **💾 Database Support**: MongoDB (Mongoose) support out of the box.
-*   **⚛️ Next.js 15 Compatible**: React 19 Actions & Async Cookies support.
+- **⚡ Instant Setup**: One command to install everything.
+- **🔒 Secure**: Bcrypt hashing, JWT sessions (HTTP-only cookies), Zod validation.
+- **📧 Email Ready**: Built-in Resend integration for verification and password resets.
+- **💾 Database Support**: MongoDB (Mongoose) support out of the box.
+- **⚛️ Next.js 15 Compatible**: React 19 Actions & Async Cookies support.
 
 ## Usage
 
@@ -29,6 +29,10 @@ Follow the interactive prompts to install MongoDB authentication.
 3.  Installs necessary dependencies (`mongoose`, `jsonwebtoken`, `zod`, etc.).
 4.  Configures your `.env` file.
 5.  Provides ready-to-use Frontend Templates for Login/Signup.
+
+## Links
+
+- **GitHub Repository**: [https://github.com/Sourodip-1/PostPipe-2.0](https://github.com/Sourodip-1/PostPipe-2.0)
 
 ## Credits
 

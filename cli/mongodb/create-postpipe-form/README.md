@@ -4,7 +4,8 @@ CLI to scaffold robust Form Submission APIs for Next.js applications, powered by
 
 ## Features
 
-- **⚡ Instant Setup**: One command to scaffold API routes.
+- **👉 Interactive Selection**: Choose from Contact, Feedback, or Newsletter forms.
+- **⚡ Instant Setup**: One command to scaffold API routes and Models.
 - **🔒 Secure**: Built-in Zod validation.
 - **💾 Database Integration**: Ready-to-use MongoDB/Mongoose models.
 - **⚛️ Next.js 15 Ready**: Supports App Router and Server Actions.
@@ -17,11 +18,21 @@ Run this command in your Next.js project root:
 npx create-postpipe-form
 ```
 
+You will be prompted to select which forms you want to generate:
+
+- **Contact Form**: Standard contact form with name, email, subject, message.
+- **Feedback Form**: Feedback collection with rating (1-5), category, and message.
+- **Newsletter**: Email subscription model.
+
 ## What it does
 
-1.  Scaffolds a Form Submission API route in `app/api/form`.
-2.  Creates necessary Mongoose models.
+1.  Scaffolds API routes in `app/api/{contact,feedback,newsletter}`.
+2.  Creates Mongoose models in `lib/models`.
 3.  Installs required dependencies (`zod`, `mongoose`).
+
+## Links
+
+- **GitHub Repository**: [https://github.com/Sourodip-1/PostPipe-2.0](https://github.com/Sourodip-1/PostPipe-2.0)
 
 ## Credits
 
