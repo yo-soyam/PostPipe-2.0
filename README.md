@@ -82,10 +82,11 @@ We now provide a set of CLI tools to instantly scaffold your project features!
 
 > **[📖 Read the Full CLI Documentation](./CLI_DOCS.md)**
 
-Quick Install:
+### Available Packages
 
-*   **Full Auth System**: `npx create-postpipe-auth`
-*   **User Model**: `npx create-postpipe-user`
-*   **Email Util**: `npx create-postpipe-email`
-*   **Signup Flow**: `npx create-postpipe-signup`
-
+- **Full Auth System**: `npx create-postpipe-auth`
+- **Appointment System**: `npx create-postpipe-appointment`
+- **Form APIs**: `npx create-postpipe-form` (Contact, Feedback, Newsletter)
+- **User Model**: `npx create-postpipe-user`
+- **Email Util**: `npx create-postpipe-email`
+- **Signup Flow**: `npx create-postpipe-signup`

@@ -1,6 +1,6 @@
 # PostPipe CLI Ecosystem 🚀
 
-PostPipe offers a suite of modular CLI tools to help you scaffold authentication, user management, and email utilities in seconds.
+PostPipe offers a suite of modular CLI tools to help you scaffold authentication, appointments, forms, user management, and email utilities in seconds.
 
 Based on your needs, you can install the **Full Suite** or pick **Individual Modules**.
 
@@ -18,11 +18,13 @@ npx create-postpipe-auth
 
 If you prefer to build piece-by-piece, use our specific modules:
 
-| Feature | Command | Description |
-| :--- | :--- | :--- |
-| **User Model** | `npx create-postpipe-user` | Installs Mongoose User Model & DB Connector. |
-| **Email Util** | `npx create-postpipe-email` | Installs Resend Email Utility. |
-| **Signup Flow** | `npx create-postpipe-signup` | Installs Backend + Signup Page implementation. |
+| Feature                | Command                           | Description                                       |
+| :--------------------- | :-------------------------------- | :------------------------------------------------ |
+| **Appointment System** | `npx create-postpipe-appointment` | Scaffolds Appointment Model, Actions & API.       |
+| **Form APIs**          | `npx create-postpipe-form`        | Interactive: Contact, Feedback, Newsletter forms. |
+| **User Model**         | `npx create-postpipe-user`        | Installs Mongoose User Model & DB Connector.      |
+| **Email Util**         | `npx create-postpipe-email`       | Installs Resend Email Utility.                    |
+| **Signup Flow**        | `npx create-postpipe-signup`      | Installs Backend + Signup Page implementation.    |
 
 ---
 
@@ -33,38 +35,56 @@ If you prefer to build piece-by-piece, use our specific modules:
 This is the all-in-one solution. It scans your project structure and installs a fully functional authentication system.
 
 **What it installs:**
-*   **Backend**: `src/lib/auth/` containing Actions, Schemas, Email, User Model.
-*   **Frontend**: `LoginPage`, `SignupPage`, `VerifyEmailPage`, `ResetPasswordPage`.
-*   **Dependencies**: `mongoose`, `zod`, `bcryptjs`, `jsonwebtoken`, `resend`, `postpipe`.
 
-**Usage:**
-1.  Run `npx create-postpipe-auth`.
-2.  Select your database (MongoDB).
-3.  Add the generated environment variables to `.env`.
-4.  Move the frontend pages to your `app/` router directory.
+- **Backend**: `src/lib/auth/` containing Actions, Schemas, Email, User Model.
+- **Frontend**: `LoginPage`, `SignupPage`, `VerifyEmailPage`, `ResetPasswordPage`.
+- **Dependencies**: `mongoose`, `zod`, `bcryptjs`, `jsonwebtoken`, `resend`, `postpipe`.
 
-### 2. `create-postpipe-user`
+### 2. `create-postpipe-appointment`
+
+Scaffolds a complete Appointment Booking System.
+
+**Files Created:**
+
+- `lib/models/Appointment.ts`: Mongoose schema.
+- `lib/actions/appointment.ts`: Server Actions for booking.
+- `app/api/appointment/route.ts`: API Route handler.
+
+### 3. `create-postpipe-form`
+
+Scaffolds robust Form Submission APIs. Now interactive!
+
+**Interactive Options:**
+
+- **Contact Form**: Standard contact API.
+- **Feedback Form**: Feedback collection with ratings.
+- **Newsletter**: Subscription logic.
+
+### 4. `create-postpipe-user`
 
 Perfect if you just want a standard Mongoose User model without the full auth logic.
 
 **Files Created:**
-*   `lib/postpipe/User.ts`: Complete Mongoose Schema with verification fields.
-*   `lib/postpipe/mongodb.ts`: Singleton Database connection helper.
 
-### 3. `create-postpipe-email`
+- `lib/models/User.ts`: Complete Mongoose Schema with verification fields.
+- `lib/dbConnect.ts`: Singleton Database connection helper.
+
+### 5. `create-postpipe-email`
 
 Installs the email sending infrastructure powered by [Resend](https://resend.com).
 
 **Files Created:**
-*   `lib/postpipe/email.ts`: `sendVerificationEmail` and `sendPasswordResetEmail` functions.
 
-### 4. `create-postpipe-signup`
+- `lib/sendEmail.ts`: `sendVerificationEmail` and `sendPasswordResetEmail` functions.
+
+### 6. `create-postpipe-signup`
 
 Scaffolds a complete "Sign Up" flow.
 
 **What it does:**
-*   Installs the Backend infrastructure (User, DB, Email) required for signup.
-*   Creates a `SignupPage.tsx` component pre-wired to server actions.
+
+- Installs the Backend infrastructure (User, DB, Email) required for signup.
+- Creates a `SignupPage.tsx` component pre-wired to server actions.
 
 ---
 
@@ -89,4 +109,4 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 ## 🤝 Support
 
-For issues, please visit our [GitHub Repository](https://github.com/postpipe/postpipe).
+For issues, please visit our [GitHub Repository](https://github.com/Sourodip-1/PostPipe-2.0).
