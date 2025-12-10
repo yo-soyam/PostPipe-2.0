@@ -1,0 +1,22 @@
+{
+    "name": "create-postpipe-profile",
+    "version": "1.0.0",
+    "description": "Scaffold a User Profile system for PostPipe",
+    "main": "index.js",
+    "bin": {
+        "create-postpipe-profile": "index.js"
+    },
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Sourodip",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^5.3.0",
+        "execa": "^8.0.1",
+        "fs-extra": "^11.2.0",
+        "inquirer": "^9.2.14",
+        "ora": "^8.0.1"
+    }
+}
