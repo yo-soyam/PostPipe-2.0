@@ -76,6 +76,7 @@ This lab allows you to test Postpipe components and database connectors in isola
 2.  Implement the connection logic (Singleton pattern recommended).
 3.  Update `src/static-server/index.ts` to handle the new protocol if needed.
 
+ 
 # 🚀 PostPipe CLI Tools
 
 We now provide a set of CLI tools to instantly scaffold your project features!
@@ -90,3 +91,4 @@ We now provide a set of CLI tools to instantly scaffold your project features!
 - **User Model**: `npx create-postpipe-user`
 - **Email Util**: `npx create-postpipe-email`
 - **Signup Flow**: `npx create-postpipe-signup`
+- **User Profile System**: `npx create-postpipe-profile`
