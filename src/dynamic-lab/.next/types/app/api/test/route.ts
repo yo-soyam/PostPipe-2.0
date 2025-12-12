@@ -1,8 +1,8 @@
-// File: D:\Codes\PostPipe-2.0\src\dynamic-lab\app\api\feedback\route.ts
-import * as entry from '../../../../../app/api/feedback/route.js'
+// File: D:\Codes\PostPipe-2.0\src\dynamic-lab\app\api\test\route.ts
+import * as entry from '../../../../../app/api/test/route.js'
 import type { NextRequest } from 'next/server.js'
 
-type TEntry = typeof import('../../../../../app/api/feedback/route.js')
+type TEntry = typeof import('../../../../../app/api/test/route.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
