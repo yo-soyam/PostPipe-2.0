@@ -23,10 +23,11 @@ Select which modules to install via the interactive CLI:
 - **Model**: `Order` (Order history, statuses).
 - **API**: `/api/orders` (Create order, list history, auto-reduce stock).
 
-### 💳 Checkout (Stripe)
+### ⚡ Server Actions
 
-- **API**: `/api/checkout` (Create Stripe Session).
-- **Webhook**: `/api/webhooks/stripe` (Handle payment success).
+- **Location**: `src/lib/actions/shop.ts`
+- **Functions**: `addToCart`, `removeFromCart`, `addToWishlist`, `removeFromWishlist`.
+- **Signature**: `(prevState, formData)` - Ready for React `useActionState`.
 
 ## Usage
 
@@ -41,7 +42,6 @@ npx create-postpipe-shop
 This package assumes you have:
 
 - `mongoose` (for database)
-- `stripe` (if using Checkout)
 
 ## License
 

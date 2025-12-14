@@ -37,6 +37,7 @@ If you prefer to build piece-by-piece, use our specific modules:
 | **Email Util** 📧         | `npx create-postpipe-email`       | Installs Resend Email Utility.                    |
 | **Signup Flow** 🔐        | `npx create-postpipe-signup`      | Installs Backend + Signup Page implementation.    |
 | **User Profile** 👤       | `npx create-postpipe-profile`     | Installs Profile & Password Management pages.     |
+| **Shop System** 🛒        | `npx create-postpipe-shop`        | Scaffolds Cart, Wishlist, and Order features.     |
 
 ---
 
@@ -108,9 +109,26 @@ Scaffolds a complete User Profile management system.
 - **Frontend**: Creates a premium `ProfilePage.tsx` component.
 
 **Features:**
+
 - Update Name & Email.
 - Secure Password Change (verifies old password).
 - Fetch User details.
+
+### 8. `create-postpipe-shop`
+
+Scaffolds a robust **Shop Backend** for E-commerce apps.
+
+**What it does:**
+
+- **Backend**: Installs Mongoose models (`Cart`, `Wishlist`, `Order`) and API routes.
+- **Actions**: Creates `lib/actions/shop.ts` with Server Actions (`addToCart`, `removeFromCart`, etc.) ready for `useActionState`.
+- **Database**: Includes `dbConnect.ts` for database connection.
+
+**Features:**
+
+- 🛒 **Shopping Cart**: User-specific cart management.
+- ❤️ **Wishlist**: Save favorite products.
+- 📦 **Orders**: Order history and basic inventory tracking.
 
 ---
 
