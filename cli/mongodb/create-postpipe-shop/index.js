@@ -16,6 +16,15 @@ async function main() {
 
     const answers = await inquirer.prompt([
         {
+            type: 'list',
+            name: 'database',
+            message: 'Choose your database:',
+            choices: [
+                { name: '1. MongoDB', value: 'mongodb' },
+                { name: '2. (coming soon)', value: 'coming_soon', disabled: true },
+            ],
+        },
+        {
             type: 'checkbox',
             name: 'modules',
             message: 'Which shop modules do you want to install?',
@@ -45,6 +54,7 @@ async function main() {
         const isSrcDir = fs.existsSync(path.join(projectRoot, 'src'));
         const apiDir = isSrcDir ? path.join('src', 'app', 'api') : path.join('app', 'api'); // App router assumption
         const modelsDir = isSrcDir ? path.join('src', 'lib', 'models') : path.join('lib', 'models');
+        const actionsDir = isSrcDir ? path.join('src', 'lib', 'actions') : path.join('lib', 'actions');
 
         // Helper to copy
         const copyTemplate = async (sourceSubDir, destSubDir) => {
@@ -71,6 +81,11 @@ async function main() {
         if (answers.modules.includes('orders')) {
             await copyTemplate('lib/models/Order.ts', path.join(modelsDir, 'Order.ts'));
             await copyTemplate('api/orders', path.join(apiDir, 'orders'));
+        }
+
+        // Copy Server Actions (if any shop module is selected)
+        if (answers.modules.length > 0) {
+            await copyTemplate('lib/actions/shop.ts', path.join(actionsDir, 'shop.ts'));
         }
 
         spinner.succeed(chalk.green('Commerce features scaffolded successfully!'));
