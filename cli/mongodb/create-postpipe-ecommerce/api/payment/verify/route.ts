@@ -48,7 +48,7 @@ export async function POST(request: Request) {
 
         // 4. Auto-Create Shipment (Initial)
         await Shipment.create({
-            orderId: order._id, // Use DB Order ID
+            orderId: order._id.toString(), // Explicitly cast ObjectId to string
             user: order.user,
             status: 'ordered',
             history: [{ status: 'ordered', description: 'Payment verified, order placed.' }]
