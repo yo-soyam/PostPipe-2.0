@@ -3,12 +3,12 @@ export const dynamic = 'force-dynamic'; // Ensure no caching
 import crypto from 'crypto';
 
 export async function POST(req: Request) {
+  let bodyData: any = {};
   try {
     // 1. Parse content
     // We expect a standard form submission or JSON
     const contentType = req.headers.get('content-type') || '';
-    let bodyData: any = {};
-
+    
     if (contentType.includes('application/json')) {
       bodyData = await req.json();
     } else if (contentType.includes('application/x-www-form-urlencoded')) {

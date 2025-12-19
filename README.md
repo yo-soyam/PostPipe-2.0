@@ -1,94 +1,78 @@
-# Postpipe 2.0 Backend Lab
+# PostPipe 2.0 Lab 🧪
 
-![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
-![License](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-yellow)
-![Status](https://img.shields.io/badge/Status-Active-success)
+Welcome to the development and testing ground for PostPipe 2.0.
+This repository contains the CLI tools, the API simulation, and the "Dynamic Lab" for testing integrations.
 
-## Architecture
+## 🚀 Quick Start (Connector Demo)
 
-```mermaid
-graph TD
-    User["Developer / User"]
+We have a fully simulated environment to test the **Zero Trust Connector** flow (`Browser -> PostPipe SaaS -> User Connector -> DB`).
 
-    subgraph "Postpipe"
-        Static["Static Server (Express)"]
-        Dynamic["Dynamic Lab (Next.js)"]
-        Connectors["Database Connectors"]
-    end
+### Prerequisites
 
-    subgraph "Databases"
-        Mongo[(MongoDB)]
-        Postgres[(PostgreSQL)]
-        MySQL[(MySQL)]
-        Scylla[(ScyllaDB)]
-        Dynamo[(DynamoDB)]
-    end
+- Node.js 18+
+- Docker (Optional, if testing container deployment)
+- MongoDB / Postgres (Local or Cloud)
 
-    User -->|POST /submit/:id| Static
-    User -->|Interact UI| Dynamic
+### Step 1: Start the SaaS Simulation
 
-    Static --> Connectors
-    Dynamic --> Connectors
+Run the "Dynamic Lab" (Next.js App) which hosts the Dashboard and Mock Ingest API.
 
-    Connectors --> Mongo
-    Connectors --> Postgres
-    Connectors --> MySQL
-    Connectors --> Scylla
-    Connectors --> Dynamo
+```bash
+npm run dev:lab
+# Runs on http://localhost:3000
 ```
 
-# Postpipe 2.0 Backend Lab - Workflow
+### Step 2: Create & Run a Connector
 
-This lab allows you to test Postpipe components and database connectors in isolation.
+In a **new terminal**, generate and run a secure connector.
 
-## Setup
+```bash
+# 1. Generate Connector
+node cli/create-postpipe-connector/dist/index.js my-test-connector
 
-1.  Copy `.env.example` to `.env` (create it if missing).
-2.  Set your `DATABASE_URI`.
-    - MongoDB: `mongodb://...`
-    - Postgres: `postgresql://...`
-    - MySQL: `mysql://...`
-    - Scylla: `scylla://...`
-    - DynamoDB: (Set AWS credentials in `.env`)
-3.  Run `npm install`.
+# 2. Install & Configure
+cd my-test-connector
+npm install
 
-## Testing Static Forms
+# 3. CRITICAL: Change Port to 3001
+# Open .env and set:
+# PORT=3001
 
-1.  Run `npm run test:static`.
-2.  Open `http://localhost:3001`.
-3.  Fill out the form and submit.
-4.  Check the console logs for "Saved to [DB] (Simulated)".
+# 4. Start Connector
+npm run dev
+```
 
-## Testing Dynamic Components (Next.js)
+### Step 3: Test the Flow
 
-1.  Run `npm run dev:lab`.
-2.  Open `http://localhost:3000`.
-3.  Use the "Component Sandbox" to test UI components.
-4.  Use the "Test API Route" button to verify API connectivity.
-5.  To test a new component:
-    - Copy it into `src/dynamic-lab/components`.
-    - Import and render it in `src/dynamic-lab/app/page.tsx`.
+1.  Open [http://localhost:3000/connector-demo](http://localhost:3000/connector-demo).
+2.  Enter your Connector URL: `http://localhost:3001/postpipe/ingest`
+3.  Click **Generate Credentials**.
+4.  Copy the `POSTPIPE_CONNECTOR_ID` and `SECRET` to your connector's `.env`.
+5.  Restart the connector terminal.
+6.  Submit the form on the Demo Page!
 
-## Adding New Connectors
+---
 
-1.  Create a new file in `src/connectors/`.
-2.  Implement the connection logic (Singleton pattern recommended).
-3.  Update `src/static-server/index.ts` to handle the new protocol if needed.
+## 📂 Project Structure
 
- 
-# 🚀 PostPipe CLI Tools
+- `cli/` - Source code for all CLI tools (`create-postpipe-auth`, `create-postpipe-connector`, etc).
+- `src/dynamic-lab/` - The Next.js application simulating the SaaS Dashboard.
+- `src/static-server/` - Legacy logic (moved to dynamic-lab).
 
-We now provide a set of CLI tools to instantly scaffold your project features!
+## 🛠️ CLI Tools
 
-> **[📖 Read the Full CLI Documentation](./CLI_DOCS.md)**
+| Command                     | Description                                   |
+| :-------------------------- | :-------------------------------------------- |
+| `create-postpipe-connector` | Scaffolds the self-hosted database connector. |
+| `create-postpipe-auth`      | Scaffolds authentication logic.               |
 
-### Available Packages
+## 🐛 Troubleshooting
 
-- **Full Auth System**: `npx create-postpipe-auth`
-- **Appointment System**: `npx create-postpipe-appointment`
-- **Form APIs**: `npx create-postpipe-form` (Contact, Feedback, Newsletter)
-- **User Model**: `npx create-postpipe-user`
-- **Email Util**: `npx create-postpipe-email`
-- **Signup Flow**: `npx create-postpipe-signup`
-- **User Profile System**: `npx create-postpipe-profile`
+**"Connection Refused"**
+
+- Ensure your Connector is running on a _different_ port (3001) than the Lab (3000).
+- Check your `.env` config.
+
+**"Invalid Signature"**
+
+- Ensure the `SECRET` in the Demo Page matches the `POSTPIPE_CONNECTOR_SECRET` in your `.env`.
