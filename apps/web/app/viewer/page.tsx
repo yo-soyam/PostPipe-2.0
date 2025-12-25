@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-export default function ViewerPage() {
+import { Suspense } from 'react';
+
+function ViewerContent() {
     const searchParams = useSearchParams();
 
     const [url, setUrl] = useState('');
@@ -133,5 +135,13 @@ export default function ViewerPage() {
 
             </div>
         </div>
+    );
+}
+
+export default function ViewerPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ViewerContent />
+        </Suspense>
     );
 }
