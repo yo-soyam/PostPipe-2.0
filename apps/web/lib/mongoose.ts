@@ -2,9 +2,7 @@ import mongoose from 'mongoose';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env');
-}
+// Removed top-level throw to allow build without env vars. Checks happen in connectToDatabase.
 
 interface MongooseCache {
   conn: typeof mongoose | null;
@@ -30,6 +28,10 @@ async function connectToDatabase() {
   }
 
   if (!cached.promise) {
+    if (!MONGODB_URI) {
+      throw new Error('Please define the MONGODB_URI environment variable inside .env');
+    }
+
     const opts = {
       bufferCommands: false,
     };

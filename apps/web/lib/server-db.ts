@@ -23,9 +23,8 @@ export interface Form {
 }
 
 // --- Persistence ---
-if (!process.env.MONGODB_URI) {
-  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
-}
+// --- Persistence ---
+// NOTE: We check this lazily or let it fail at runtime in functions to allow build-time execution without env vars.
 
 const uri = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DB_NAME || 'postpipe_core';
@@ -34,25 +33,34 @@ const options = {};
 let client;
 let clientPromise: Promise<MongoClient>;
 
-if (process.env.NODE_ENV === 'development') {
-  // In development mode, use a global variable so that the value
-  // is preserved across module reloads caused by HMR (Hot Module Replacement).
-  // @ts-ignore
-  if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
-    // @ts-ignore
-    global._mongoClientPromise = client.connect();
+function getClientPromise(): Promise<MongoClient> {
+  if (clientPromise) return clientPromise;
+
+  if (!uri) {
+    throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
   }
-  // @ts-ignore
-  clientPromise = global._mongoClientPromise;
-} else {
-  // In production mode, it's best to not use a global variable.
-  client = new MongoClient(uri, options);
-  clientPromise = client.connect();
+
+  if (process.env.NODE_ENV === 'development') {
+    // In development mode, use a global variable so that the value
+    // is preserved across module reloads caused by HMR.
+    // @ts-ignore
+    if (!global._mongoClientPromise) {
+      client = new MongoClient(uri, options);
+      // @ts-ignore
+      global._mongoClientPromise = client.connect();
+    }
+    // @ts-ignore
+    clientPromise = global._mongoClientPromise;
+  } else {
+    // In production mode, it's best to not use a global variable.
+    client = new MongoClient(uri, options);
+    clientPromise = client.connect();
+  }
+  return clientPromise;
 }
 
 async function getDB() {
-    const c = await clientPromise;
+    const c = await getClientPromise();
     return c.db(dbName);
 }
 
