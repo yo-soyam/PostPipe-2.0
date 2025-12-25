@@ -1,0 +1,25 @@
+{
+  "connectors": [
+    {
+      "id": "conn_v21aci55h",
+      "secret": "sk_live_kzoqse23jc5m9i5i5ad",
+      "url": "http://localhost:3001",
+      "name": "My Local Connector"
+    }
+  ],
+  "forms": [
+    {
+      "id": "test1",
+      "name": "test1",
+      "connectorId": "conn_v21aci55h",
+      "fields": [
+        {
+          "name": "email",
+          "type": "email",
+          "required": true
+        }
+      ],
+      "createdAt": "2025-12-25T05:19:56.527Z"
+    }
+  ]
+}
